@@ -21,7 +21,9 @@ def file_input(file_name):
     activ_dict = {0:int(num_act), 1:int(time_av), 2:int(budget_av)}
 
     for act in enumerate(activities):
-        activ_dict[act[0]+3] = str(act[1].strip())
+        act_list = act[1].strip().split(" ")
+
+        activ_dict[act[0]+3] = [str(act_list[0]), int(act_list[1]), int(act_list[2])]
 
     return activ_dict
 
