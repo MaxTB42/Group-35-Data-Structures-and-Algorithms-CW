@@ -1,32 +1,42 @@
 
 def file_input(file_name):
-    open_file = open(file_name, 'r')
+    activity_file = open(file_name, 'r')
     activities = []
     count = 0
-    for line in open_file:
+
+    # Decode each line
+    for line in activity_file:
         if count == 0:
-            num_act = int(line)
+            number_of_activities = int(line)
         elif count == 1:
-            time_budget = line
+            time_and_budget = line
         else:
             activities.append(line)
         count += 1
+    
+    # Close the file
+    activity_file.close()
 
     # Extract the time and budget from line 2
-    time_av = time_budget.split(" ")[0]
-    budget_av = time_budget.split(" ")[1]
+    time_and_budget_separated = time_and_budget.split(' ')
+    time_available = time_and_budget_separated[0]
+    budget_available = time_and_budget_separated[1]
 
     # Output file metadata
-    print(f"Num of activities: {num_act} ")
-    print(f"Time: {time_av} ")
-    print(f"Budget: {budget_av}")
-    activ_dict = {0:int(num_act), 1:int(time_av), 2:int(budget_av)}
+    print(f"Num of activities: {number_of_activities}")
+    print(f"Time: {time_available}")
+    print(f"Budget: {budget_available}")
 
-    for act in enumerate(activities):
-        act_list = act[1].strip().split(" ")
+    # Initialise the activity dictionary with the file metadata
+    activity_dict = {0:int(number_of_activities), 1:int(time_available), 2:int(budget_available)}
 
-        activ_dict[act[0]+3] = [str(act_list[0]), int(act_list[1]), int(act_list[2]), int(act_list[3])]
+    # Iterate over each activity extracted from the input file
+    for activity in enumerate(activities):
+        # Separate out the activity attributes
+        activity_attributes = activity[1].strip().split(" ")
+        # Add this extracted activity to the dictionary of activities
+        activity_dict[activity[0] + 3] = [str(activity_attributes[0]), int(activity_attributes[1]), int(activity_attributes[2]), int(activity_attributes[3])]
 
-    return activ_dict
+    return activity_dict
 
 print(file_input("./Input_Files/input_10.txt"))
