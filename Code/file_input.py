@@ -12,9 +12,11 @@ def file_input(file_name):
             activities.append(line)
         count += 1
 
+    # Extract the time and budget from line 2
     time_av = time_budget.split(" ")[0]
     budget_av = time_budget.split(" ")[1]
 
+    # Output file metadata
     print(f"Num of activities: {num_act} ")
     print(f"Time: {time_av} ")
     print(f"Budget: {budget_av}")
@@ -27,4 +29,4 @@ def file_input(file_name):
 
     return activ_dict
 
-print(file_input("Sample Input Files/input_10.txt"))
+print(file_input("./Input_Files/input_10.txt"))
