@@ -35,7 +35,8 @@ def file_input(file_name):
         # Separate out the activity attributes
         activity_attributes = activity[1].strip().split(" ")
         # Add this extracted activity to the dictionary of activities
-        activity_dict[activity[0] + 3] = [str(activity_attributes[0]), int(activity_attributes[1]), int(activity_attributes[2]), int(activity_attributes[3])]
+        activity_dict[activity[0] + 3] = [str(activity_attributes[0]), int(activity_attributes[1]),
+                                          int(activity_attributes[2]), int(activity_attributes[3])]
 
     return activity_dict
 
