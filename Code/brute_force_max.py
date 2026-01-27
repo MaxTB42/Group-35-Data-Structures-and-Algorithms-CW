@@ -1,6 +1,7 @@
 from file_input import file_input
 from itertools import combinations
 import math
+import time
 
 def generate_subs(dict, length):
     #Isolate activities
@@ -48,12 +49,18 @@ def verify_subsets(subsets_sum, activity_dict):
     print(f"Verified subsets: {len(subsets_sum)}")
     return verified_subsets
 
-
+start_time = time.time()
 activity_dict = file_input("../Input_Files/input_10.txt")
-subsets = generate_subs(activity_dict, 4)
+subsets = []
+for i in range(10):
+    subsets.extend(generate_subs(activity_dict, i))
+
 subset_sum = total_subsets(subsets)
 subset_sum_checked = verify_subsets(subset_sum, activity_dict)
 
 #Sorting list by enjoyment
 sorted_subsets= sorted(subset_sum_checked, key=lambda x: x[2], reverse=True)
 print(f"Most enjoyment: {sorted_subsets[0]}")
+end_time = time.time()
+
+print(f"Time taken: {end_time - start_time:.4f}")
