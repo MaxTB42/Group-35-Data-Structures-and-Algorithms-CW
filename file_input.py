@@ -23,7 +23,7 @@ def file_input(file_name):
     for act in enumerate(activities):
         act_list = act[1].strip().split(" ")
 
-        activ_dict[act[0]+3] = [str(act_list[0]), int(act_list[1]), int(act_list[2])]
+        activ_dict[act[0]+3] = [str(act_list[0]), int(act_list[1]), int(act_list[2]), int(act_list[3])]
 
     return activ_dict
 
