@@ -46,7 +46,7 @@ def verify_subsets(subsets_sum, activity_dict):
     for subset in subsets_sum:
         if subset[1] <= total_cost:
             verified_subsets.append(subset)
-    print(f"Verified subsets: {len(subsets_sum)}")
+    print(f"Verified subsets: {len(verified_subsets)}")
     return verified_subsets
 
 start_time = time.time()
@@ -61,6 +61,6 @@ subset_sum_checked = verify_subsets(subset_sum, activity_dict)
 #Sorting list by enjoyment
 sorted_subsets= sorted(subset_sum_checked, key=lambda x: x[2], reverse=True)
 print(f"Most enjoyment: {sorted_subsets[0]}")
-end_time = time.time()
 
+end_time = time.time()
 print(f"Time taken: {end_time - start_time:.4f}")
