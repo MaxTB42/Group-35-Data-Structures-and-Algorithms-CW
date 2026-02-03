@@ -6,28 +6,26 @@ and Algorithms Coursework using the cost as a limitation.
 import time
 import file_input_new as fi
 
-def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
+def dynamic_subsets(activity_list: tuple[tuple]) -> list[list[tuple]]:
     """
     This function generates all possible subsets of a given
     list using dynamic programming algorithm.
     """
     av_budget = activity_list[0][2]
-    subsets = [[]]
+    subsets = [([], 0)]
 
     for act in activity_list[1:]:
         act_cost = act[2]
         inner_set = []
 
-        for sub in subsets:
-            current_sum = sum(item[2] for item in sub)
-            if current_sum + act_cost <= av_budget:
-                entry = sub + [act]
+        for sub, curr_cost in subsets:
+            if curr_cost + act_cost <= av_budget:
+                entry = (sub + [act], curr_cost + act_cost)
                 inner_set.append(entry)
-
         subsets.extend(inner_set)
-    return subsets
+    return [item[0] for item in subsets]
 
 start = time.time()
-print(f"Length of subsets {len(dynamic_subsets(fi.file_input("../Input_Files/input_10.txt")))}")
+print(f"Length of subsets {len(dynamic_subsets(fi.file_input('../Input_Files/input_10.txt')))}")
 end = time.time()
 print(end - start)
