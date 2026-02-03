@@ -1,21 +1,25 @@
+"""
+This module is used to read and parse the file of activities.
+"""
 
-def file_input(file_name):
-    activity_file = open(file_name, 'r')
+def file_input(file_name: str) -> dict:
+    """
+    This function reads and parses the input file.
+    """
+
+    # Initialising variables
     activities = []
-    count = 0
+    time_and_budget = ''
+    number_of_activities = 0
 
-    # Decode each line
-    for line in activity_file:
-        if count == 0:
-            number_of_activities = int(line)
-        elif count == 1:
-            time_and_budget = line
-        else:
-            activities.append(line)
-        count += 1
-    
-    # Close the file
-    activity_file.close()
+    # Read the file contents
+    with open(file_name, 'r', encoding='utf-8') as activity_file:
+        # Extract the number of activities and time/budget lines
+        number_of_activities = int(activity_file.readline())
+        time_and_budget = activity_file.readline()
+
+        # Read the rest of the file and split into each activity line
+        activities += activity_file.read().splitlines()
 
     # Extract the time and budget from line 2
     time_and_budget_separated = time_and_budget.split(' ')
@@ -23,9 +27,9 @@ def file_input(file_name):
     budget_available = time_and_budget_separated[1]
 
     # Output file metadata
-    print(f"Num of activities: {number_of_activities}")
-    print(f"Time: {time_available}")
-    print(f"Budget: {budget_available}")
+    #print(f"Num of activities: {number_of_activities}")
+    #print(f"Time: {time_available} Hours")
+    #print(f"Budget: £{budget_available}")
 
     # Initialise the activity dictionary with the file metadata
     activity_dict = {0:int(number_of_activities), 1:int(time_available), 2:int(budget_available)}
@@ -33,11 +37,9 @@ def file_input(file_name):
     # Iterate over each activity extracted from the input file
     for activity in enumerate(activities):
         # Separate out the activity attributes
-        activity_attributes = activity[1].strip().split(" ")
+        activity_attributes = activity[1].strip().split(' ')
         # Add this extracted activity to the dictionary of activities
         activity_dict[activity[0] + 3] = [str(activity_attributes[0]), int(activity_attributes[1]),
                                           int(activity_attributes[2]), int(activity_attributes[3])]
 
     return activity_dict
-
-print(file_input("../Input_Files/input_10.txt"))
