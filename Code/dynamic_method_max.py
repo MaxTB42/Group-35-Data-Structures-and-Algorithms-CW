@@ -1,15 +1,20 @@
-import file_input_new as fi
+"""
+This Python module houses the dynamic programming method to ECM1414 Data Structures
+and Algorithms Coursework using the cost as a limitation.
+"""
+
 import time
+import file_input_new as fi
 
-def dynamic_subsets(list):
-    num_activities = list[0][0]
-    av_budget = list[0][2]
-    av_time = list[0][1]
-    total_subsets = 2**num_activities
-
+def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
+    """
+    This function generates all possible subsets of a given
+    list using dynamic programming algorithm.
+    """
+    av_budget = activity_list[0][2]
     subsets = [[]]
 
-    for act in list[1:]:
+    for act in activity_list[1:]:
         act_cost = act[2]
         inner_set = []
 
@@ -23,6 +28,6 @@ def dynamic_subsets(list):
     return subsets
 
 start = time.time()
-print(len(dynamic_subsets(fi.file_input("../Input_Files/input_large.txt"))))
+print(f"Length of subsets {len(dynamic_subsets(fi.file_input("../Input_Files/input_10.txt")))}")
 end = time.time()
 print(end - start)
