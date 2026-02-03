@@ -40,4 +40,4 @@ def file_input(file_name):
 
     return activity_dict
 
-print(file_input("./Input_Files/input_10.txt"))
+print(file_input("../Input_Files/input_10.txt"))
