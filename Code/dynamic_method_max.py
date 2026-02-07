@@ -35,9 +35,12 @@ def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
     return subsets
 
 def file_to_list(file_path):
+    """
+    This function transforms the file input into a list of activities.
+    """
     act_list = []
-    with open(file_path, "r") as file:
-        lines = [line.strip() for line in file.readlines()]
+    with open(file_path, "r") as f:
+        lines = [line.strip() for line in f.readlines()]
 
     time_budget = list(map(int, lines[1].split()))
     av_budget = time_budget[1]
@@ -46,18 +49,18 @@ def file_to_list(file_path):
     for line in lines[2:]:
         parts = line.split()
         name = parts[0]
-        time = int(parts[1])
+        act_time = int(parts[1])
         cost = int(parts[2])
         enjoy = int(parts[3])
-        act_list.append((name, time, cost, enjoy))
+        act_list.append((name, act_time, cost, enjoy))
 
     return act_list
 
 start = time.time()
-act_list= file_to_list('../Input_Files/input_500.txt')
-subsets = dynamic_subsets(act_list)
+file = file_to_list('../Input_Files/input_100.txt')
+optimal_subsets = dynamic_subsets(file)
 
-print(f"Length of subsets: {len(subsets)}")
-print(f"Selected activities: {subsets}")
+print(f"Length of subsets: {len(optimal_subsets)}")
+print(f"Selected activities: {optimal_subsets}")
 end = time.time()
 print("Time taken:", end - start)
