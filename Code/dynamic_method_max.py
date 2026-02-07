@@ -4,28 +4,60 @@ and Algorithms Coursework using the cost as a limitation.
 """
 
 import time
-import file_input_new as fi
 
-def dynamic_subsets(activity_list: tuple[tuple]) -> list[list[tuple]]:
+def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
     """
     This function generates all possible subsets of a given
     list using dynamic programming algorithm.
     """
-    av_budget = activity_list[0][2]
-    subsets = [([], 0)]
+    av_budget = activity_list[0][1]
+    activities = activity_list[1:]
+    num_activities = len(activities)
 
-    for act in activity_list[1:]:
+    dp_table = [0] * (av_budget + 1)
+
+    for act in activities:
         act_cost = act[2]
-        inner_set = []
+        act_enjoy = act[3]
+        for i in range(av_budget, act_cost-1, -1):
+            dp_table[i] = max(dp_table[i], dp_table[i - act_cost] + act_enjoy)
 
-        for sub, curr_cost in subsets:
-            if curr_cost + act_cost <= av_budget:
-                entry = (sub + [act], curr_cost + act_cost)
-                inner_set.append(entry)
-        subsets.extend(inner_set)
-    return [item[0] for item in subsets]
+    subsets = []
+    budget = av_budget
+
+    for i in range(num_activities-1,-1,-1):
+        act_cost = activities[i][2]
+        act_enjoy = activities[i][3]
+
+        if budget >= act_cost and dp_table[budget] == dp_table[budget-act_cost] + act_enjoy:
+            subsets.append(activities[i])
+            budget = budget - act_cost
+    return subsets
+
+def file_to_list(file_path):
+    act_list = []
+    with open(file_path, "r") as file:
+        lines = [line.strip() for line in file.readlines()]
+
+    time_budget = list(map(int, lines[1].split()))
+    av_budget = time_budget[1]
+    act_list.append((0, av_budget))
+
+    for line in lines[2:]:
+        parts = line.split()
+        name = parts[0]
+        time = int(parts[1])
+        cost = int(parts[2])
+        enjoy = int(parts[3])
+        act_list.append((name, time, cost, enjoy))
+
+    return act_list
 
 start = time.time()
-print(f"Length of subsets {len(dynamic_subsets(fi.file_input('../Input_Files/input_10.txt')))}")
+act_list= file_to_list('../Input_Files/input_500.txt')
+subsets = dynamic_subsets(act_list)
+
+print(f"Length of subsets: {len(subsets)}")
+print(f"Selected activities: {subsets}")
 end = time.time()
-print(end - start)
+print("Time taken:", end - start)
