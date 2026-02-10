@@ -62,11 +62,10 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
                 sum_of_budget += activity_list[activity_index][2]
                 sum_of_enjoyment_values += activity_list[activity_index][3]
 
-            # Check if the total budget and time required for this subset is within the
-            # available budget and time, and that the enjoyment value is larger than
-            # the current largest
+            # Check if the total budget required for this subset is within the
+            # available budget, and that the enjoyment value is larger than the current largest
             if (sum_of_enjoyment_values >= optimal_subset['total_enjoyment_value']
-                and sum_of_budget <= available_budget and sum_of_time <= available_time):
+                and sum_of_budget <= available_budget):
                 # Therefore we have found a new optimal subset, so update the dictionary
                 optimal_subset['subset_indices'] = subset
                 optimal_subset['required_time'] = sum_of_time
