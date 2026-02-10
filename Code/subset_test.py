@@ -3,7 +3,7 @@
 from itertools import combinations
 from file_input_new import file_input
 
-def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[tuple]:
+def generate_subset_old(activity_indices: tuple[int], size_of_subset: int) -> list[tuple]:
     """
     This function generates all subsets of a given size using the provided list of indices.
 
@@ -38,6 +38,42 @@ def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[t
         group_end += 1
 
     # Return the list containing the subsets of size "size_of_subset"
+    return subsets
+
+
+def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[tuple]:
+    """
+    This function generates all subsets of a given size using the provided list of indices.
+
+    ### The Idea:
+    To save duplicating the activity data multiple times, this function will generate all subsets
+    (of a specified size) of indices for each activity, which range from 1 to n. These indices can
+    then be used to work out which activity belongs to which subset. This approach avoids having
+    to duplicate the activity data many times.
+    """
+
+    # Initialise a list to hold the subsets
+    subsets = []
+
+    # Base case: if subset size is 1, return a list of individual elements.
+    if size_of_subset == 1:
+        # Loop through each element
+        for element in activity_indices:
+            # Add this element to the list of subsets
+            subsets.append([element])
+        return subsets
+
+    # Recursive section:
+    # Calculate all the subsets of size n-1
+    subsets = generate_subset(activity_indices, size_of_subset - 1)
+
+    # Iterate through the activity index list and add each element to the subset
+    for element in activity_indices:
+        for i in range(len(subsets)):
+            # Ensure the current element isn't already in the subset
+            if not (element in subsets[i]):
+                subsets[i].append(element)
+
     return subsets
 
 
