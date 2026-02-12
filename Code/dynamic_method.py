@@ -2,7 +2,6 @@
 This Python module houses the dynamic programming method to ECM1414 Data Structures
 and Algorithms Coursework using the cost as a limitation.
 """
-import time
 
 def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
     """
@@ -59,12 +58,3 @@ def file_to_list(file_path):
         act_list.append((name, act_time, cost, enjoy))
 
     return act_list
-
-start = time.time()
-file = file_to_list('../Input_Files/input_large.txt')
-optimal_subsets = dynamic_subsets(file)
-
-print(f"Length of subsets: {len(optimal_subsets)}")
-print(f"Selected activities: {optimal_subsets}")
-end = time.time()
-print("Time taken:", end - start)
