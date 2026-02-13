@@ -4,14 +4,15 @@ import math
 import time
 
 def generate_subs(dict, length):
+
     #Isolate activities
     items = list(dict.values())
     activity_dict_short = items[3:]
     #Generate subsets
     subsets = list(combinations(activity_dict_short, length))
     #Verifing subset count
-    print(f"Number of subsets: {len(subsets)}")
-    print(f"Combinations:{math.comb(10,length)}")
+    #print(f"Number of subsets: {len(subsets)}")
+    #print(f"Combinations:{math.comb(100,length)}")
     return subsets
 
 def total_subsets(subsets):
@@ -40,13 +41,13 @@ def total_subsets(subsets):
 
 def verify_subsets(subsets_sum, activity_dict):
     total_cost = activity_dict[2]
-    print(f"Original subsets: {len(subsets_sum)}")
+    #print(f"Original subsets: {len(subsets_sum)}")
     #Checking whether each set is within budget
     verified_subsets = []
     for subset in subsets_sum:
         if subset[1] <= total_cost:
             verified_subsets.append(subset)
-    print(f"Verified subsets: {len(verified_subsets)}")
+    #print(f"Verified subsets: {len(verified_subsets)}")
     return verified_subsets
 
 start_time = time.time()
