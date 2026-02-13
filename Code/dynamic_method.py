@@ -9,9 +9,9 @@ def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
     list using dynamic programming algorithm.
     """
     #Sets initial values
-    av_budget = activity_list[0][1]
+    av_budget = activity_list[0][2]
     activities = activity_list[1:]
-    num_activities = len(activities)
+    num_activities = activity_list[0][0]
 
     #Initiates the Dynamic Programming table
     dp_table = [0] * (av_budget + 1)
@@ -35,26 +35,3 @@ def dynamic_subsets(activity_list: list[tuple]) -> list[tuple]:
             subsets.append(activities[i])
             budget = budget - act_cost
     return subsets
-
-def file_to_list(file_path):
-    """
-    This function transforms the file input into a list of activities.
-    """
-    #Opens the file, removing new line data
-    act_list = []
-    with open(file_path, "r") as f:
-        lines = [line.strip() for line in f.readlines()]
-
-    time_budget = list(map(int, lines[1].split()))
-    av_budget = time_budget[1]
-    act_list.append((0, av_budget))
-
-    for line in lines[2:]:
-        parts = line.split()
-        name = parts[0]
-        act_time = int(parts[1])
-        cost = int(parts[2])
-        enjoy = int(parts[3])
-        act_list.append((name, act_time, cost, enjoy))
-
-    return act_list
