@@ -29,7 +29,7 @@ def file_input(input_file_name: str) -> list[tuple]:
 
     # If the file doesn't exist, inform the user
     if Path.exists(input_file_path) is False:
-        print(f"File '{input_file_name}' doesn't exist in path: '{input_file_path}'!")
+        print(f"File '{input_file_name}' doesn't exist in the directory: '{input_file_path.parent}'.")
         # Exit the program
         sys.exit()
 
