@@ -10,10 +10,9 @@ def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[t
     This function generates all subsets of a given size using the provided list of indices.
 
     ### The Idea:
-    Since the activity dictionary's keys are indices, this function will generate all subsets
-    (of a specified size) of indices, which range from 3 to n+2. These indices can then be used
-    to work out which activity belongs to which subset. This approach avoids having to duplicate the
-    activity data many times.
+    So that the activity data isn't duplicated many times, this function will generate all subsets
+    (of a specified size) of indices, which range from 1 to n. These indices can then be used
+    to work out which activity belongs to which subset.
     """
 
     # Return the list containing the subsets of size "size_of_subset"
@@ -62,15 +61,14 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
                 sum_of_budget += activity_list[activity_index][2]
                 sum_of_enjoyment_values += activity_list[activity_index][3]
 
-            # Check if the total budget and time required for this subset is within the
-            # available budget and time, and that the enjoyment value is larger than
-            # the current largest
+            # Check if the total budget required for this subset is within the
+            # available budget, and that the enjoyment value is larger than the current largest
             if (sum_of_enjoyment_values >= optimal_subset['total_enjoyment_value']
                 and sum_of_budget <= available_budget):
                 # Therefore we have found a new optimal subset, so update the dictionary
                 optimal_subset['subset_indices'] = subset
-                optimal_subset['time_used'] = sum_of_time
-                optimal_subset['budget_used'] = sum_of_budget
+                optimal_subset['required_time'] = sum_of_time
+                optimal_subset['required_budget'] = sum_of_budget
                 optimal_subset['total_enjoyment_value'] = sum_of_enjoyment_values
 
     # Return the optimal solution
