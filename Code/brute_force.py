@@ -38,10 +38,10 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
 
     # Generate a list of integers ranging from 1 to n+1, n being the number of activites
     # We start at 1 because the first element in the activity list is metadata
-    activity_indices = range(1, activity_list[0] + 1)
+    activity_indices = range(1, activity_list[0][0] + 1)
 
     # Generate and evaluate all subsets
-    for size_of_subset in range(1, activity_list[0] + 1):
+    for size_of_subset in range(1, activity_list[0][0] + 1):
         # Generate the subsets of size "size_of_subset"
         subsets = generate_subset(activity_indices, size_of_subset)
 
