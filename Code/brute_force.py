@@ -31,13 +31,12 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
     # Initialise dictionary to hold optimal solution
     optimal_subset = {
         'subset_indices': (),
-        'required_time': 0,
-        'required_budget': 0,
+        'time_used': 0,
+        'budget_used': 0,
         'total_enjoyment_value': 0
     }
 
-    # Generate a list of integers ranging from 1 to n+1
-    # n being number_of_activites
+    # Generate a list of integers ranging from 1 to n+1, n being the number of activites
     # We start at 1 because the first element in the activity list is metadata
     activity_indices = range(1, activity_list[0] + 1)
 
@@ -62,12 +61,12 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
 
             # Check if the total budget required for this subset is within the
             # available budget, and that the enjoyment value is larger than the current largest
-            if (sum_of_enjoyment_values >= optimal_subset['total_enjoyment_value']
+            if (sum_of_enjoyment_values > optimal_subset['total_enjoyment_value']
                 and sum_of_budget <= available_budget):
                 # Therefore we have found a new optimal subset, so update the dictionary
                 optimal_subset['subset_indices'] = subset
-                optimal_subset['required_time'] = sum_of_time
-                optimal_subset['required_budget'] = sum_of_budget
+                optimal_subset['time_used'] = sum_of_time
+                optimal_subset['budget_used'] = sum_of_budget
                 optimal_subset['total_enjoyment_value'] = sum_of_enjoyment_values
 
     # Return the optimal solution
