@@ -11,8 +11,8 @@ def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[t
 
     ### The Idea:
     So that the activity data isn't duplicated many times, this function will generate all subsets
-    (of a specified size) of indices, which range from 1 to n. These indices can then be used
-    to work out which activity belongs to which subset.
+    (of a specified size) of indices, which range from 1 to n (number of activities). These indices
+    can then be used to work out which activity belongs to which subset.
     """
 
     # Return the list containing the subsets of size "size_of_subset"
