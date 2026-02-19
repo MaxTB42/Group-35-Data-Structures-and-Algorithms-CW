@@ -3,7 +3,7 @@ This Python module houses the dynamic programming method to ECM1414 Data Structu
 and Algorithms Coursework using the cost as a limitation.
 """
 
-def dynamic_subsets(activity_list: list[tuple]) -> dict[list[tuple]]:
+def dynamic_subsets(activity_list: list[tuple]) -> dict:
     """
     This function generates all possible subsets of a given
     list using dynamic programming algorithm.
