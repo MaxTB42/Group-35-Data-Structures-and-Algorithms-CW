@@ -16,8 +16,8 @@ def dynamic_subsets(activity_list: list[tuple]) -> dict[list[tuple]]:
     # Create a dictionary to hold optimal solution
     optimal_subset = {
         'subset': (),
-        'required_time': 0,
-        'required_budget': 0,
+        'time_used': 0,
+        'budget_used': 0,
         'total_enjoyment_value': 0
     }
 
@@ -51,8 +51,8 @@ def dynamic_subsets(activity_list: list[tuple]) -> dict[list[tuple]]:
             total_enjoy += act_enjoy
 
     optimal_subset['subset'] = subsets
-    optimal_subset['required_time'] = total_time
-    optimal_subset['required_budget'] = required_budget
+    optimal_subset['time_used'] = total_time
+    optimal_subset['budget_used'] = required_budget
     optimal_subset['total_enjoyment_value'] = total_enjoy
 
     return optimal_subset
