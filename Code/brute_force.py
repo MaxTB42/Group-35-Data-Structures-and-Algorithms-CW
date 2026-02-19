@@ -27,7 +27,6 @@ def find_optimal_solution(activity_list: list[tuple]) -> dict:
 
     # Extract the total budget we have available
     available_budget = activity_list[0][2]
-    available_time = activity_list[0][1]
 
     # Initialise dictionary to hold optimal solution
     optimal_subset = {
