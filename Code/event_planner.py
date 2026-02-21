@@ -78,8 +78,12 @@ if __name__ == "__main__":
     print("\n--- DYNAMIC PROGRAMMING ALGORITHM ---")
     # Output the solution
     print("Selected Activities:")
+    # Store the selected activities
+    selected_activities = dynamic_programming_optimal_sol['subset']
     # Iterate through each selected activity
-    for activity in dynamic_programming_optimal_sol['subset']:
+    for activity_index in range(len(selected_activities)-1, -1, -1):
+        # Store the activity
+        activity = selected_activities[activity_index]
         # Output the choosen activity
         print(f"  - {activity[0]} ({activity[1]} {"hour" if activity[1] == 1 else "hours"}, "\
               f"£{activity[2]}, enjoyment {activity[3]})")
