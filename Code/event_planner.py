@@ -89,3 +89,5 @@ if __name__ == "__main__":
     print(f"Total Cost: £{dynamic_programming_optimal_sol["budget_used"]}\n")
     # Output the execution time
     print(f"Execution Time: {dp_execution_time:.6f} seconds")
+
+    print("\n========================================")
