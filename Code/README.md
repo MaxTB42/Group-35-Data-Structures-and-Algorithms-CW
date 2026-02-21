@@ -19,18 +19,18 @@ Group_35_ECM1414_Coursework.zip
 │   └───README.md
 │
 ├───Documents/
-│       Report.pdf
-│       Group_Contribution_Statement.pdf
+│   │   Report.pdf
+│   └───Group_Contribution_Statement.pdf
 │       
 ├───Input_Files/
-│       input_10.txt
-│       input_100.txt
-│       input_1000.txt
-│       input_200.txt
-│       input_500.txt
-│       input_large.txt
-│       input_medium.txt
-│       input_small.txt
+│   │   input_10.txt
+│   │   input_100.txt
+│   │   input_1000.txt
+│   │   input_200.txt
+│   │   input_500.txt
+│   │   input_large.txt
+│   │   input_medium.txt
+│   └───input_small.txt
 │       
 └───Presentation/
     └───Presentation_Slides.pdf
