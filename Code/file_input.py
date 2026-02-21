@@ -1,5 +1,5 @@
 """
-This mobule parses the input file, formatting the activities in
+This module parses the input file, formatting the activities in
 a way that is suitable for the algorithms.
 """
 
