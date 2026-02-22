@@ -15,8 +15,10 @@ from brute_force import find_optimal_solution
 # Used to access the dynamic programming algorithm
 from dynamic_method import dynamic_subsets
 
-# Only run this program if executed directly
-if __name__ == "__main__":
+def main():
+    """
+    Entry function for event_planner.py program.
+    """
     # Check if the user has entered a file name
     if len(sys.argv) <= 1:
         # Inform the user that they haven't inputted a file name
@@ -95,3 +97,7 @@ if __name__ == "__main__":
     print(f"Execution Time: {dp_execution_time:.6f} seconds")
 
     print("\n========================================")
+
+# Only run this program if executed directly
+if __name__ == "__main__":
+    main()
