@@ -1,7 +1,7 @@
 # ECM1414 - Data Structures and Algorithms CW - Group 35
 
 ## Description
-This project analyses a list of activities that a University society could undertake over the course of a weekend. The aim is to maximise the enjoyment of the participants whilst keeping to a specified budget. This is achieved through two different algorithms: a brute force approach and a dynamically programmed approach. Both approaches are timed and their respective solutions are outputted in a human readable format. The project has been designed to interact with a specific format of input file, located in the `Input_Files` directory.
+This project analyses a list of activities that a university society could undertake over the course of a weekend. The aim is to maximise the enjoyment of the participants whilst keeping to a specified budget. This is achieved through two different algorithms: a brute force approach and a dynamically programmed approach. Both approaches are timed and their respective solutions are outputted in a human readable format. The project has been designed to interact with a specific format of input file, located in the `Input_Files` directory.
 
 ## How to run
  - Ensure you are in the directory that contains the `event_planner.py` script.
