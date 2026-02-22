@@ -5,7 +5,7 @@ and Algorithms Coursework.
 
 from itertools import combinations
 
-def generate_subset(activity_indices: tuple[int], size_of_subset: int) -> list[tuple]:
+def generate_subset(activity_indices: list[int], size_of_subset: int) -> list[tuple]:
     """
     This function generates all subsets of a given size using the provided list of indices.
 
